@@ -10,7 +10,7 @@ const Category = ({ job }) => {
           <img className="w-10" src={account} alt="" />
         </div>
         <h2 className="card-title">{category_name}</h2>
-        <p>{availability}</p>
+        <p className="text-base font-medium text-[#757575]">{availability}</p>
       </div>
     </div>
   );
