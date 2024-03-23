@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import locations from "../../assets/icons/location2.png";
 import money from "../../assets/icons/money.png";
 
@@ -10,6 +11,7 @@ const FeaturedJobCard = ({ feature }) => {
     job_type,
     location,
     salary,
+    id,
   } = feature;
 
   return (
@@ -41,9 +43,11 @@ const FeaturedJobCard = ({ feature }) => {
           </div>
         </div>
         <div className="card-actions">
-          <button className="btn text-lg text-white  bg-gradient-to-r from-[#7E90FE] to-[#9873FF] font-bold">
-            View Details
-          </button>
+          <NavLink to={`/job/${id}`}>
+            <button className="btn text-lg text-white  bg-gradient-to-r from-[#7E90FE] to-[#9873FF] font-bold">
+              View Details
+            </button>
+          </NavLink>
         </div>
       </div>
     </div>

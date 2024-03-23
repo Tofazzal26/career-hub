@@ -4,6 +4,7 @@ import Root from "../Components/Root/Root";
 import Statistics from "../Components/Statistics/Statistics";
 import AppliedJob from "../Components/AppliedJob/AppliedJob";
 import Blogs from "../Components/Blogs/Blogs";
+import JobDetails from "../Components/JobDetails/JobDetails";
 
 export const Routers = createBrowserRouter([
   {
@@ -13,6 +14,11 @@ export const Routers = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/job/:id",
+        loader: () => fetch("../../public/jobs.json"),
+        element: <JobDetails />,
       },
       {
         path: "/statistics",
