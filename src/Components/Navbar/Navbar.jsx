@@ -39,7 +39,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-3xl font-extrabold">CareerHub</a>
+        <NavLink to="/" className="btn btn-ghost text-3xl font-extrabold">
+          CareerHub
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-base font-bold">
@@ -69,9 +71,12 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn text-lg text-white  bg-gradient-to-r from-[#7E90FE] to-[#9873FF] font-bold">
+        <NavLink
+          to="/"
+          className="btn text-lg text-white  bg-gradient-to-r from-[#7E90FE] to-[#9873FF] font-bold"
+        >
           Star Applying
-        </a>
+        </NavLink>
       </div>
     </div>
   );

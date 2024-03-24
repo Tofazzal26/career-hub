@@ -1,6 +1,9 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
-import { saveLocalStored } from "../SaveLocalStorage/SaveLocalStorage";
+import {
+  getStoredApplication,
+  saveLocalStored,
+} from "../SaveLocalStorage/SaveLocalStorage";
 
 const JobDetails = () => {
   const details = useLoaderData();
@@ -9,8 +12,17 @@ const JobDetails = () => {
   const job = details.find((idx) => idx.id === idnx);
 
   const handleJobApply = () => {
+    const stored = getStoredApplication();
+    const isExisted = stored.find((idx) => idx == idnx);
+    console.log(isExisted);
+    console.log(idnx);
+    console.log(stored);
     saveLocalStored(idnx);
-    toast.success("Successfully toasted!");
+    if (!isExisted) {
+      toast.success("Successfully toasted!");
+    } else {
+      toast.error("Already Added");
+    }
   };
 
   return (
@@ -44,16 +56,22 @@ const JobDetails = () => {
             <div className="p-6">
               <h2 className="text-lg font-semibold">Job Details</h2>
               <div className="divider"></div>
-              <p className="text-base font-semibold text-[#626262]">Salary: </p>
               <p className="text-base font-semibold text-[#626262]">
-                Job Title:{" "}
+                Salary: {job.salary}
+              </p>
+              <p className="text-base font-semibold text-[#626262]">
+                Job Title: {job.job_type}
               </p>
               <h2 className="text-lg font-semibold">Contact Information</h2>
               <div className="divider"></div>
-              <p className="text-base font-semibold text-[#626262]">Phone: </p>
-              <p className="text-base font-semibold text-[#626262]">Email: </p>
               <p className="text-base font-semibold text-[#626262]">
-                Address:{" "}
+                Phone: {job.contact_information.phone}
+              </p>
+              <p className="text-base font-semibold text-[#626262]">
+                Email: {job.contact_information.email}
+              </p>
+              <p className="text-base font-semibold text-[#626262]">
+                Address: {job.contact_information.address}
               </p>
             </div>
           </div>
