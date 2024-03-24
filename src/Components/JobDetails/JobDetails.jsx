@@ -1,10 +1,17 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
+import { saveLocalStored } from "../SaveLocalStorage/SaveLocalStorage";
 
 const JobDetails = () => {
   const details = useLoaderData();
   const { id } = useParams();
   const idnx = parseInt(id);
   const job = details.find((idx) => idx.id === idnx);
+
+  const handleJobApply = () => {
+    saveLocalStored(idnx);
+    toast.success("Successfully toasted!");
+  };
 
   return (
     <div className="container mx-auto">
@@ -51,12 +58,16 @@ const JobDetails = () => {
             </div>
           </div>
           <div className="mt-4">
-            <button className="btn text-lg text-white w-full bg-gradient-to-r from-[#7E90FE] to-[#9873FF] font-bold">
+            <button
+              onClick={handleJobApply}
+              className="btn text-lg text-white w-full bg-gradient-to-r from-[#7E90FE] to-[#9873FF] font-bold"
+            >
               Apply Now
             </button>
           </div>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
